@@ -15,20 +15,25 @@
         transition: all 0.5s ease;
         padding: 40px;
       }
-      section {
+      button {
         display: flex;
-        gap: 5px;
+        align-items: center;
+        gap: 10px;
         margin: auto;
         width: fit-content;
         background-color: royalblue;
-        padding: 20px;
+        padding: 15px;
         border-radius: 5px;
+        border: 2px solid red;
+        box-shadow: 0 0 15px rgba(128, 128, 128, 0.603),
+          0 0 30px rgba(128, 128, 128, 0.603),
+          0 0 45px rgba(128, 128, 128, 0.603);
+        cursor: pointer;
       }
-      button {
+      section {
         border: 2px solid black;
         width: 32px;
-        cursor: pointer;
-        height: 19px;
+        height: 20px;
         position: relative;
         display: flex;
         background: transparent;
@@ -44,15 +49,18 @@
         border-radius: 50%;
         background-color: black;
       }
+      b {
+        font-size: 15px;
+      }
     </style>
   </head>
   <body id="body">
-    <section>
+    <button id="button" onclick="move()">
       <b id="main">Light Mode</b>
-      <button id="button" onclick="move()">
+      <section id="section">
         <span id="span"></span>
-      </button>
-    </section>
+      </section>
+    </button>
   </body>
 </html>
 
@@ -60,13 +68,13 @@
   let body = document.getElementById("body");
   let main = document.getElementById("main");
   let span = document.getElementById("span");
-  let button = document.getElementById("button");
+  let section = document.getElementById("section");
   function move() {
     if (span.style.left === "calc(100% - 15px)") {
       span.style.left = "2px";
       span.style.background = "black";
+      section.style.borderColor = "black";
       body.style.background = "white";
-      button.style.borderColor = "black";
       main.style.color = "black";
       main.innerHTML = "Light Mode";
       return;
@@ -74,7 +82,7 @@
     body.style.background = "black";
     span.style.left = "calc(100% - 15px)";
     span.style.background = "white";
-    button.style.borderColor = "white";
+    section.style.borderColor = "white";
     main.innerHTML = "Dark Mode";
     main.style.color = "white";
   }
